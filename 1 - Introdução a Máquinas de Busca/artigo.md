@@ -29,14 +29,14 @@ Esta etapa pode ser conhecida como Crawler quando se trata de conteúdo para int
 
 Dado esse contexto, podemos detalhar os componentes de uma máquina de busca da seguinte forma:
 
-#### Conectores
+##### Conectores
 Ajuda no trabalho de conectar em diversas fontes de dados, como varrer um site, fazer integrações com outros sistemas (API) e rastrear um sistema de arquivos. Sua responsabilidade é injetar dados para dentro da máquina de busca.
 		
-#### Processamento de Conteúdo
+##### Processamento de Conteúdo
 Responsável por processar todos os dados injetados pelos conectores e, por todo o processamento de normalização linguística e enriquecimento de dados para o conteúdo ficar buscável pelo usuário. Vale ressaltar que essa etapa é uma das mais importantes de uma máquina de busca.	
 
-#### Índice 
-responsável por armazenar os dados normalizados para busca do usuário. Geralmente é visto como uma tabela de um banco de dados, mas o conceito é diferente. 
+##### Índice 
+Responsável por armazenar os dados normalizados para busca do usuário. Geralmente é visto como uma tabela de um banco de dados, mas o conceito é diferente. 
 
 Segue abaixo uma representação de dois documentos gravados em um banco de dados:  
 
@@ -53,10 +53,10 @@ As chaves são palavras do texto e os valores são os ids dos documentos (docume
 Ao contrário de um banco de dados relacional, a busca nessa estrutura de dados é mais eficiente, porque todas as palavras são chaves. Entretanto,  é necessário normalizar o processamento da consulta do usuário. 
 
 
-#### Processamento de Consulta
+##### Processamento de Consulta
 Nesta etapa aplicamos tratamento linguístico com os mesmos padrões do índice, para que possamos encontrar o documento perfeito para a busca. É possível fazer enriquecimento da consulta como sinônimos, tratamento de erros ortográficos, dentre outros.
 
-### Para finalizar...
+## Para finalizar...
 
 Podemos notar o quão importante é uma máquina de busca em nosso cotidiano quando nos damos conta de que é quase impossível começar sua jornada na internet sem realizar uma busca.
 
@@ -64,4 +64,7 @@ Dia após dia, empresas investem em pesquisas com a proposta de modernizar e tor
 
 Nos próximos artigos aprofundaremos como os dados são normalizados no índice de busca.
 
-Muito obrigado e até o próximo artigo. 
+Muito obrigado e até o próximo artigo.
+
+### Referências
+- [https://pt.wikipedia.org/wiki/Motor_de_busca](https://pt.wikipedia.org/wiki/Motor_de_busca)
