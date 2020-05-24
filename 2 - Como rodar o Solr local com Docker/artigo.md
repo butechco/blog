@@ -55,7 +55,7 @@ Não vamos entrar em detalhes disso agora, mas saiba que para gerenciar essas in
 Vamos utilizar o Docker Compose para facilitar essa parte e simplificar um pouco as coisas.
 No terminal você deve baixar o arquivo de descrição da sua infra:
 ```shell
-curl --output docker-compose.yml https://raw.githubusercontent.com/docker-solr/docker-solr-examples/master/docker-compose/docker-compose.yml
+curl --output docker-compose.yml -L https://gist.github.com/andreformento/c0657e53ed534946e0a9f39b7103e1f7/raw/solr-example.yaml
 ```
 
 Depois, basta subir o Solr com suas dependências:
