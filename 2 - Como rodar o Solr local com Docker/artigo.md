@@ -52,24 +52,16 @@ Para que o Solr tenha resilência ele utiliza mais de uma instância.
 Não vamos entrar em detalhes disso agora, mas saiba que para gerenciar essas instâncias ele precisa do Zookeeper, por isso ele vai subir junto.
 
 
-Vamos utilizar o Docker Compose para facilitar essa parte e simplificar um pouco as coisas.
-No terminal você deve baixar o arquivo de descrição da sua infra:
+Vamos utilizar o [Docker Compose](https://docs.docker.com/compose/) para facilitar essa parte e simplificar um pouco as coisas.
+
+- No terminal você deve baixar o arquivo de descrição da sua infra:
 ```shell
-curl --output docker-compose.yml -L https://gist.github.com/andreformento/c0657e53ed534946e0a9f39b7103e1f7/raw/solr-example.yaml
+curl --output docker-compose.yaml -L https://gist.github.com/andreformento/c0657e53ed534946e0a9f39b7103e1f7/raw/solr-example.yaml
 ```
 
-Depois, basta subir o Solr com suas dependências:
+- Depois, basta subir o Solr com suas dependências:
 ```shell
 docker-compose up -d
-```
-
-
-
-
-É fornecido um script (`solr-precreate`) que facilita a criação e uma coleção assim que o Solr sobe e a gente pode usar passando o nome (`meus_produtos`) que queremos utilizar.
-
-```shell
-docker run -d -p 8983:8983 --name solr_8 solr:8.5.1 solr-precreate meus_produtos
 ```
 
 Agora basta acessar através do browser no endereço: http://localhost:8983/
@@ -79,10 +71,15 @@ Agora basta acessar através do browser no endereço: http://localhost:8983/
 O Solr utiliza o conceito de coleção (collection) para representar a forma como os documentos serão gerenciados - através do seu schema.
 Um paralelo ao schema seria a tabela de um banco de dados relacional que possui campos e seus respectivos tipos.
 
+- Para criar a coleção do nosso exemplo (`meus_produtos`) vamos utilizar a sua [API de gerenciamento](https://lucene.apache.org/solr/guide/8_5/collection-management.html#collection-management):
+```shell
+curl -X POST 'http://localhost:8983/solr/admin/collections?action=CREATE&name=meus_produtos&numShards=1'
+```
+
 Ao acessar os arquivos de configuração da sua coleção, você vai ver que lá são definidos os campos e tipos com seus pipelines.
 Veja em http://localhost:8983/solr/#/meus_produtos/files?file=managed-schema
 
-O arquivo mostra que podemos ter os tipos, o campos e várias outras configurações.
+O arquivo mostra que podemos ter os tipos, os campos e várias outras configurações relacionadas.
 Vejamos, por exemplo o _field\_type_ `text_general`:
 ```xml
 <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
@@ -130,9 +127,56 @@ O objetivo maior aqui é mostrar que as possibilidades de personalização da bu
 
 A API permite adicionar um documento da seguinte forma:
 ```shell
-curl -X POST -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/update?commit=true' --data-binary '[{ 
-    "id": "flight_666",
-    "descricao_do_produto": "Avião do Iron Maiden"
-}]'
+curl -X POST -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/update?commit=true' --data-binary '[
+    {"id": "flight_666","descricao_do_produto": "Canecas do Iron Maiden"},
+    {"id": "m0","descricao_do_produto": "Caneca do Metallica"},
+    {"id": "m1","descricao_do_produto": "Camiseta do Metallica"},
+    {"id": "m2","descricao_do_produto": "Caneta metálica"},
+    {"id": "b2","descricao_do_produto": "Caneta azul"}
+]'
 ```
 
+### E finalmente a busca!
+
+- Para buscar todos os documentos sem nenhum critério basta dizer que a query (`q`) deve buscar em todos os campos (`*`) em todos os valores (`*`).
+```shell
+curl -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/select?q=*:*'
+```
+A sintaxe então seria: `nome_do_campo:termo_de_busca`
+
+- Para buscar dentro do campo que criamos seria assim:
+```shell
+curl -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/select?q=descricao_do_produto:caneca'
+```
+
+No resultado vimos os documentos `Caneca do Metallica` e `Canecas do Iron Maiden`, mostrando então resultado no plural e no singular.
+Isso porque o tipo que usamos no pipeline de query e search foi o `text_pt`.
+Dentro dele a classe [PortugueseLightStemFilterFactory](https://lucene.apache.org/core/8_5_1/analyzers-common/org/apache/lucene/analysis/pt/PortugueseLightStemFilterFactory.html) é responsável por extrair o radical, que neste caso é `canec`, conforme podemos ver no (schema)[http://localhost:8983/solr/#/meus_produtos/files?file=managed-schema]:
+```xml
+<fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_pt.txt" ignoreCase="true"/>
+        <filter class="solr.PortugueseLightStemFilterFactory"/>
+    </analyzer>
+</fieldType>
+```
+
+- Se a busca for executada com o radical teremos o mesmo resultado:
+```shell
+curl -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/select?q=descricao_do_produto:canec'
+```
+
+## E agora?
+
+- Para finalizar e remover o que construímos, basta parar os serviços:
+```shell
+docker-compose down -v -t 0
+```
+
+Muitos assuntos podem surgir dos vários pontos discutidos.
+Como fazer a escrita em tempo real para que os novos produtos (ou alterados) fiquem disponíveis o mais rápido possível? Podemos discutir ferramentas para fazer [NRT](https://lucene.apache.org/solr/guide/8_5/near-real-time-searching.html) ou ferramentas como [Spark](https://github.com/lucidworks/spark-solr)
+
+Também ficam temas como colocar em produção, manutenções, escalabilidade, os vários tipos de campos e estratégias de como montar o pipeline, dentre várias outras coisas.
+Mas isso fica pro futuro. :)
