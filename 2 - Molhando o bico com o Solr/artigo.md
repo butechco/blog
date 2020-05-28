@@ -1,4 +1,4 @@
-# Como rodar o Solr local com Docker
+# Molhando o bico com o Solr
 
 No [post anterior](https://medium.com/butech-co/um-gole-de-m%C3%A1quinas-de-busca-fa41b7d577c6) discutimos o que é um motor de busca.
 Hoje tentaremos utilizar uma das mais famosas plataformas de buscas utilizadas no mercado: o [Solr](https://lucene.apache.org/solr/).
