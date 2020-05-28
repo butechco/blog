@@ -2,23 +2,22 @@
 
 No [post anterior](https://medium.com/butech-co/um-gole-de-m%C3%A1quinas-de-busca-fa41b7d577c6) discutimos o que é um motor de busca.
 Hoje tentaremos utilizar uma das mais famosas plataformas de buscas utilizadas no mercado: o [Solr](https://lucene.apache.org/solr/).
-Ele é uma plataforma de busca construída em cima do [Lucene](https://lucene.apache.org/) que é o motor de busca.
+Ele é uma plataforma de busca construída em cima do [Lucene](https://lucene.apache.org/) que é um framework de information retrieval.
 
-O objetivo aqui é explicar como rodar o Solr local, mas com uma pequena introdução de todo o potencial que a plataforma pode proporcionar.
+Nosso objetivo aqui é explicarmos como rodar o Solr em seu computador com uma pequena introdução do que a plataforma pode proporcionar.
 
 ## Lucene e Solr
 
-O Lucene é uma biblioteca Java responsável por fazer a escrita no índice (index) e prover as features de busca (search) para a leitura.
-Podem haver transformações nos campos de um documento antes de ser inserido e no processo busca (pipeline).
-O Lucece é responsável por implementar os recursos (features) do motor de busca.
+O Lucene é uma biblioteca Java responsável por criar índice de busca (index) e prover as features de busca (search) para a leitura.
+Poderá ocorrer transformações nos valores de um documento antes de ser indexado ou em uma query durante o processamento de uma busca (pipeline).
+O Lucece é responsável por implementar os recursos (funcionalidades) do motor de busca.
 
-Já o Solr é uma cada que normalmente fica a frente do Lucene.
-É literalmente um servidor que usa o Lucene por baixo dos panos.
-É a camada que facilita a iteração da busca com uma aplicação.
+Já o Solr é uma camada que foi construída em cima do Lucene.
+É um servidor que utiliza o Lucene que tem como objetivo facilitar a manutenção, escalabilidade, administração e a integração entre os sistemas.
 
-### Pipeline de index e search
+### Pipeline do índice e da consulta
 
-No nosso contexto, "pipeline" é como chamamos o fluxo para entrada ou saída de alguma informação.
+No contexto de motor de busca, "pipeline" é como chamamos o fluxo para entrada ou saída de alguma informação.
 
 #### Index
 
@@ -32,8 +31,8 @@ Na escrita o documento pode ter vários tratamentos para cada um de seus campos 
 #### Search
 
 Já na leitura é aplicado pipeline do termo buscado (query) e a lógica pode ficar muito parecida:
-- remover acentos;
-- extrair o radical;
+- remover acentos (normalizer);
+- extrair o radical (Stemmer);
 - tokenizer
 - adicionar sinônimos
 - etc
@@ -41,8 +40,8 @@ Já na leitura é aplicado pipeline do termo buscado (query) e a lógica pode fi
 Dá pra perceber que pipeline de escrita pode ser diferente da leitura, pois eles são indepentes.
 A [documentação do próprio Solr](https://lucene.apache.org/solr/guide/8_5/field-type-definitions-and-properties.html#field-type-definitions-in-schema-xml) ajuda bastante a entender tudo que é possível ser feito.
 
-Uma coisa importante para entender é que o fica gravado no índice precisa ser equivalente ao termo que será buscado.
-Se eu remover os acentos do índice, eu preciso remover os acentos do termo de busca, senão o termo nunca poderá ser encontrado.
+**IMPORTANTE:** Precisamos normalizar tanto o índice quanto a consulta com os mesmos tokenizers e normalizers.
+Ou seja, se eu remover os acentos do índice, eu preciso remover os acentos do termo de busca, senão o termo nunca poderá ser encontrado.
 Mas algumas coisas podem diferir, como foi o caso dos sinônimos, pois é possível adicioná-los apenas ao termo buscado (no exemplo do pipeline ali de cima).
 
 ## E afinal, como rodar?
@@ -53,6 +52,7 @@ Não vamos entrar em detalhes disso agora, mas saiba que para gerenciar essas in
 
 
 Vamos utilizar o [Docker Compose](https://docs.docker.com/compose/) para facilitar essa parte e simplificar um pouco as coisas.
+Neste exemplo foi utilizado o docker-compose na versão 2.
 
 - No terminal você deve baixar o arquivo de descrição da sua infra:
 ```shell
@@ -68,7 +68,7 @@ Agora basta acessar através do browser no endereço: http://localhost:8983/
 
 ## Um pouco sobre a sua estrutura
 
-O Solr utiliza o conceito de coleção (collection) para representar a forma como os documentos serão gerenciados - através do seu schema.
+O Solr utiliza o conceito de coleção (collection) que é um agrupamento lógico para representar a forma como os documentos serão gerenciados - através do seu schema.
 Um paralelo ao schema seria a tabela de um banco de dados relacional que possui campos e seus respectivos tipos.
 
 - Para criar a coleção do nosso exemplo (`meus_produtos`) vamos utilizar a sua [API de gerenciamento](https://lucene.apache.org/solr/guide/8_5/collection-management.html#collection-management):
@@ -117,15 +117,15 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
 
 Conforme a [documentação](https://lucene.apache.org/solr/guide/8_5/schema-api.html#add-a-new-field), estamos adicionando o campo `descricao_do_produto` com o tipo `text_pt` e `stored: true`.
 Ou seja, o campo não servirá apenas para ser encontrado durante o pipeline de query, mas também poderá ser encontrado na resposta da busca.
-No caso de um campo `stored: false` não é possível ter acesso à ele quando o documento for encontrado, só pro Solr utilizar na sua busca.
+No caso de um campo `stored: false` não é possível vizualizar o conteúdo quando o documento for encontrado.
 Na prática, isso quer dizer que o valor no seu formato original não é guardado com o objetivo de otimização (diminuição) do tamanho do índice.
 
 Existem muitos outros parâmetros possíveis para esta ação de criar um campo, assim como muitas outras ações possíveis.
 O objetivo maior aqui é mostrar que as possibilidades de personalização da busca são enormes e a documentação poderá ajudar a entender tudo que a plataforma oferece.
 
-### Adicionando um documento
+### Indexando documentos
 
-A API permite adicionar um documento da seguinte forma:
+A API permite indexar documentos da seguinte forma:
 ```shell
 curl -X POST -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/update?commit=true' --data-binary '[
     {"id": "flight_666","descricao_do_produto": "Canecas do Iron Maiden"},
@@ -149,8 +149,8 @@ A sintaxe então seria: `nome_do_campo:termo_de_busca`
 curl -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produtos/select?q=descricao_do_produto:caneca'
 ```
 
-No resultado vimos os documentos `Caneca do Metallica` e `Canecas do Iron Maiden`, mostrando então resultado no plural e no singular.
-Isso porque o tipo que usamos no pipeline de query e search foi o `text_pt`.
+No resultado vimos os documentos `Caneca do Metallica` e `Canecas do Iron Maiden` na mesma lista no plural e no singular.
+Isso porque o tipo que usamos no pipeline de index e query foi o `text_pt`.
 Dentro dele a classe [PortugueseLightStemFilterFactory](https://lucene.apache.org/core/8_5_1/analyzers-common/org/apache/lucene/analysis/pt/PortugueseLightStemFilterFactory.html) é responsável por extrair o radical, que neste caso é `canec`, conforme podemos ver no (schema)[http://localhost:8983/solr/#/meus_produtos/files?file=managed-schema]:
 ```xml
 <fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
@@ -180,3 +180,4 @@ Como fazer a escrita em tempo real para que os novos produtos (ou alterados) fiq
 
 Também ficam temas como colocar em produção, manutenções, escalabilidade, os vários tipos de campos e estratégias de como montar o pipeline, dentre várias outras coisas.
 Mas isso fica pro futuro. :)
+Amigão, passa a régua pra gente?
