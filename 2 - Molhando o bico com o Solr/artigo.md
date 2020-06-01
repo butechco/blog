@@ -172,7 +172,7 @@ curl -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produt
 
 - Para finalizar e remover o que construímos, basta parar os serviços:
 ```shell
-docker-compose down -v -t 0
+docker-compose down -v
 ```
 
 Muitos assuntos podem surgir dos vários pontos discutidos.
