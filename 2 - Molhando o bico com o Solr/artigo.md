@@ -151,7 +151,7 @@ curl -H 'Content-Type: application/json' 'http://localhost:8983/solr/meus_produt
 
 No resultado vimos os documentos `Caneca do Metallica` e `Canecas do Iron Maiden` na mesma lista no plural e no singular.
 Isso porque o tipo que usamos no pipeline de index e query foi o `text_pt`.
-Dentro dele a classe [PortugueseLightStemFilterFactory](https://lucene.apache.org/core/8_5_1/analyzers-common/org/apache/lucene/analysis/pt/PortugueseLightStemFilterFactory.html) é responsável por extrair o radical, que neste caso é `canec`, conforme podemos ver no (schema)[http://localhost:8983/solr/#/meus_produtos/files?file=managed-schema]:
+Dentro dele a classe [PortugueseLightStemFilterFactory](https://lucene.apache.org/core/8_5_1/analyzers-common/org/apache/lucene/analysis/pt/PortugueseLightStemFilterFactory.html) é responsável por extrair o radical, que neste caso é `canec`, conforme podemos ver no [schema](http://localhost:8983/solr/#/meus_produtos/files?file=managed-schema):
 ```xml
 <fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
     <analyzer>
