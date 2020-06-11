@@ -182,4 +182,4 @@ Também ficam temas como colocar em produção, manutenções, escalabilidade, o
 
 Mas isso fica pro futuro. :)
 
-Amigão, passa a régua pra gente?
+_Amigão, passa a régua pra gente?_
