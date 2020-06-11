@@ -176,7 +176,7 @@ docker-compose down -v
 ```
 
 Muitos assuntos podem surgir dos vários pontos discutidos.
-Como fazer a escrita em tempo real para que os novos produtos (ou alterados) fiquem disponíveis o mais rápido possível? Podemos discutir ferramentas para fazer [NRT](https://lucene.apache.org/solr/guide/8_5/near-real-time-searching.html) ou ferramentas como [Spark](https://github.com/lucidworks/spark-solr)
+Como fazer a escrita em tempo real para que os novos produtos (ou alterados) fiquem disponíveis o mais rápido possível? Podemos discutir ferramentas para fazer [NRT](https://lucene.apache.org/solr/guide/8_5/near-real-time-searching.html) ou ferramentas como [Spark](https://github.com/lucidworks/spark-solr).
 
 Também ficam temas como colocar em produção, manutenções, escalabilidade, os vários tipos de campos e estratégias de como montar o pipeline, dentre várias outras coisas.
 
