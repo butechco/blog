@@ -6,6 +6,10 @@ Ele é uma plataforma de busca construída em cima do [Lucene](https://lucene.ap
 
 Nosso objetivo aqui é explicarmos como rodar o Solr em seu computador com uma pequena introdução do que a plataforma pode proporcionar.
 
+<p align="center">
+  <img src="solr-docker.png?raw=true" alt="Solr e Docker">
+</p>
+
 ## Lucene e Solr
 
 O Lucene é uma biblioteca Java responsável por criar índice de busca (index) e prover as features de busca (search) para a leitura.
