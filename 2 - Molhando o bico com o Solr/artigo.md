@@ -187,3 +187,5 @@ Também ficam temas como colocar em produção, manutenções, escalabilidade, o
 Mas isso fica pro futuro. :)
 
 _Amigão, passa a régua pra gente?_
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Cc-by-nc-nd_icon.svg">
