@@ -79,3 +79,5 @@ Amigão, passa a régua pra gente?
 
 ### Referências
 - [https://pt.wikipedia.org/wiki/Motor_de_busca](https://pt.wikipedia.org/wiki/Motor_de_busca)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Cc-by-nc-nd_icon.svg">
