@@ -75,3 +75,4 @@ Como pudemos observar é muito fácil contribuir com projetos open source. Quant
 
 Por hoje é isso! Meu queridão, passa a régua para nós? 
 	
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Cc-by-nc-nd_icon.svg">
