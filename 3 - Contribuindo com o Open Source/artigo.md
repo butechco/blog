@@ -2,18 +2,18 @@
 
 Hoje em dia é comum utilizarmos o software open source em nossas aplicações ou até mesmo no nosso dia a dia em nossos computadores pessoais. 
 
-Temos diversos casos de sucesso de projetos open source como Solr e ElasticSearch e o mais famoso entre eles o Linux, que além de open source é software livre mas, por que consumimos do open source e não contribuímos também?
+Temos diversos casos de sucesso de projetos open source como Solr e ElasticSearch e o mais famoso o Linux, que além de open source é software livre mas, por que consumimos projetos open source e não contribuímos?
 
-Acredito que isso seja, porque não sabemos como contribuir mas, podemos contribuir de diversas maneira, não apenas com código, mas com documentação, com divulgação do projeto, ajudando novos usuários com o projeto, reportando erros, solicitando funcionalidades, enfim, diversas formas.
+Acredito que isso seja porque não sabemos como contribuir. Nós podemos contribuir de diversas maneira e não apenas com código, mas com documentação, com divulgação do projeto, ajudando novos usuários, reportando erros, solicitando funcionalidades, enfim, diversas formas.
 
-A grande virtude de contribuirmos com código aberto é ganharmos conhecimento independente da forma de contribuição. O contato com pessoas de outras culturas, outras empresas, trás um crescimento enorme profissionalmente e pessoalmente.
+A grande virtude de contribuirmos com projetos open source é ganharmos conhecimento independente da forma de contribuição, contato com pessoas de outras culturas e empresas, isso trás um crescimento profissional e pessoal.
 
-O que gostaria de mostrar de agora em diante, é como utilizar o github para contribuir com o código aberto, então vamos lá.
+O que gostaria de mostrar a partir de agora  é como utilizar o github para contribuir com projetos open source.
 
 
 ## Contribuição com código no GitHub
 
-Para começar a contribuir com código em um projeto primeiro passo é fazer um fork para seu perfil do github, para isso entre entre no projeto que você quer contribuir e click em:
+Para começar a contribuir com código em um projeto primeiro passo é fazer um fork para seu perfil do github, para isso entre entre no projeto nomeu caso https://github.com/butechco/banheiro e click em:
 
 <p>
     <img src="imagens/imagem1.png" width="350px">
@@ -34,7 +34,8 @@ Faça todas as alterações necessária no projeto como desejar e após as alter
 <p>
     <img src="imagens/imagem4.png" width="250px">
 </p>
-Após clicado em“New pull request” selecione o “base repository” (projeto qual foi feito o fork) e head repository (o fork realizado), como é mostrado na imagem abaixo: 
+
+Após clicado em “New pull request” selecione o “base repository” (projeto qual foi feito o fork) e head repository (o fork realizado), como é mostrado na imagem abaixo: 
 <p>
     <img src="imagens/imagem5.png" width="750px">
 </p>
@@ -53,7 +54,7 @@ Pronto! você acabou de contribuir com código em um projeto open source. Simple
 
 ### Issues
 
-Normalmente utilizamos Issues para reportar bug, novas funcionalidades ou até mesmo responder issues. Para utilizar é bem simples, no repositório de origem (butechco/saidera) basta clicar na aba “issues” e clicar em “new issue” como mostrado abaixo: 
+Utilizamos Issues para reportar bug ou novas funcionalidades. Para utilizar é bem simples, no repositório de origem (butechco/saidera) basta clicar na aba “issues” e clicar em “new issue” como mostrado abaixo: 
 <p>
     <img src="imagens/imagem8.png" width="850px">
 </p>
@@ -63,7 +64,7 @@ Depois basta criar o issue colocando um título e detalhando o bug ou a funciona
     <img src="imagens/imagem9.png" width="850px">
 </p>
 
-Além de criar nova issues você pode também responder issues abertas por outros usuários. =)
+Além de criar nova issues você pode também responder issues criadas por outros usuários. =)
 <p>
     <img src="imagens/imagem10.png" width="850px">
 </p>
