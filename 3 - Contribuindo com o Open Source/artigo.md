@@ -41,7 +41,7 @@ Após clicado em “New pull request” selecione o “base repository” (proje
     <img src="imagens/imagem5.png" width="750px">
 </p>
 
-Agora basta digitar o título do seu pull request e comentários que desejar do seu pull request e clique em “Create pull request”:
+Agora basta digitar o título do seu pull request e comentários que desejar do seu pull request e clique em `Create pull request`:
 <p>
     <img src="imagens/imagem6.png" width="850px">
 </p>
