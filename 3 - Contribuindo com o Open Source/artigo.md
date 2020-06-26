@@ -36,7 +36,7 @@ Faça todas as alterações necessária no projeto como desejar e após as alter
     <img src="imagens/imagem4.png" width="250px">
 </p>
 
-Após clicado em “New pull request” selecione o “base repository” (projeto qual foi feito o fork) e head repository (o fork realizado), como é mostrado na imagem abaixo: 
+Após clicado em `New pull request` selecione o `base repository` (projeto qual foi feito o fork) e `head repository` (o fork realizado), como é mostrado na imagem abaixo: 
 <p>
     <img src="imagens/imagem5.png" width="750px">
 </p>
