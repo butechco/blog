@@ -5,7 +5,7 @@ Hoje em dia é comum utilizarmos o software open source em nossas aplicações o
 Temos diversos casos de sucesso de projetos open source como Solr e ElasticSearch e o mais famoso o Linux, que além de open source é software livre.
 Mas, por que consumimos projetos open source e não contribuímos?
 
-Acredito que isso seja porque não sabemos como contribuir. Nós podemos contribuir de diversas maneira e não apenas com código, mas com documentação, com divulgação do projeto, ajudando novos usuários, reportando erros, solicitando funcionalidades, enfim, diversas formas.
+Acredito que isso seja porque não sabemos como contribuir. Nós podemos contribuir de diversas maneiras e não apenas com código, mas com documentação, com divulgação do projeto, ajudando novos usuários, reportando erros, solicitando funcionalidades, enfim, diversas formas.
 
 A grande virtude de contribuirmos com projetos open source é ganharmos conhecimento independente da forma de contribuição, contato com pessoas de outras culturas e empresas, isso trás um crescimento profissional e pessoal.
 
