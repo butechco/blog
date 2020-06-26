@@ -14,7 +14,7 @@ O que gostaria de mostrar a partir de agora  é como utilizar o github para cont
 
 ## Contribuição com código no GitHub
 
-Para começar a contribuir com código em um projeto primeiro passo é fazer um fork para seu perfil do github, para isso entre entre no projeto nomeu caso https://github.com/butechco/banheiro e click em:
+Para começar a contribuir com código em um projeto o primeiro passo é fazer um fork para seu perfil do github. Para isso, entre no projeto e click em:
 
 <p>
     <img src="imagens/imagem1.png" width="350px">
