@@ -65,7 +65,7 @@ Depois basta criar o issue colocando um título e detalhando o bug ou a funciona
     <img src="imagens/imagem9.png" width="850px">
 </p>
 
-Além de criar nova issues você pode também responder issues criadas por outros usuários. =)
+Além de criar nova issues você pode também responder issues criadas por outros usuários e contribuir discutindo algo. =)
 <p>
     <img src="imagens/imagem10.png" width="850px">
 </p>
