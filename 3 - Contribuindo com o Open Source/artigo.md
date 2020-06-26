@@ -2,7 +2,8 @@
 
 Hoje em dia é comum utilizarmos o software open source em nossas aplicações ou até mesmo no nosso dia a dia em nossos computadores pessoais. 
 
-Temos diversos casos de sucesso de projetos open source como Solr e ElasticSearch e o mais famoso o Linux, que além de open source é software livre mas, por que consumimos projetos open source e não contribuímos?
+Temos diversos casos de sucesso de projetos open source como Solr e ElasticSearch e o mais famoso o Linux, que além de open source é software livre.
+Mas, por que consumimos projetos open source e não contribuímos?
 
 Acredito que isso seja porque não sabemos como contribuir. Nós podemos contribuir de diversas maneira e não apenas com código, mas com documentação, com divulgação do projeto, ajudando novos usuários, reportando erros, solicitando funcionalidades, enfim, diversas formas.
 
