@@ -46,7 +46,7 @@ Agora basta digitar o título do seu pull request e comentários que desejar do 
     <img src="imagens/imagem6.png" width="850px">
 </p>
 
-Seu pull request será criado no repositório origem no meu caso “butechco/saidera”
+Seu pull request será criado no repositório origem. No meu caso `butechco/saidera`
 <p>
     <img src="imagens/imagem7.png" width="750px">
 </p>
