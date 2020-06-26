@@ -51,7 +51,7 @@ Seu pull request será criado no repositório origem. No meu caso `butechco/said
     <img src="imagens/imagem7.png" width="750px">
 </p>
 
-Pronto! você acabou de contribuir com código em um projeto open source. Simples não?
+Pronto! Você acabou de contribuir com código em um projeto open source. Simples não?
 
 ### Issues
 
