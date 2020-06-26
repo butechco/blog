@@ -55,7 +55,7 @@ Pronto! Você acabou de contribuir com código em um projeto open source. Simple
 
 ### Issues
 
-Utilizamos Issues para reportar bug ou novas funcionalidades. Para utilizar é bem simples, no repositório de origem (butechco/saidera) basta clicar na aba “issues” e clicar em “new issue” como mostrado abaixo: 
+Utilizamos Issues para reportar bug ou novas funcionalidades. Para utilizar é bem simples. Basta ir no repositório de origem (`butechco/saidera`), clicar na aba `issues` e clicar em `new issue` como mostrado abaixo: 
 <p>
     <img src="imagens/imagem8.png" width="850px">
 </p>
