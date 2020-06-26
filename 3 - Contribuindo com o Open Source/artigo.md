@@ -7,7 +7,7 @@ Mas, por que consumimos projetos open source e não contribuímos?
 
 Acredito que isso seja porque não sabemos como contribuir. Nós podemos contribuir de diversas maneiras e não apenas com código, mas com documentação, com divulgação do projeto, ajudando novos usuários, reportando erros, solicitando funcionalidades, enfim, diversas formas.
 
-A grande virtude de contribuirmos com projetos open source é ganharmos conhecimento independente da forma de contribuição, contato com pessoas de outras culturas e empresas, isso trás um crescimento profissional e pessoal.
+A grande virtude de contribuirmos com projetos open source é ganharmos conhecimento independente da forma de contribuição, contando com pessoas de outras culturas e empresas, isso traz um crescimento profissional e pessoal.
 
 O que gostaria de mostrar a partir de agora  é como utilizar o github para contribuir com projetos open source.
 
